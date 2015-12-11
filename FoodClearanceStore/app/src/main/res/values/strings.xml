@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">"Food Clearance Store "</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_add">Add Product</string>
+    <string name="action_customers">My Subscribers</string>
+    <string name="action_profile">My Profile</string>
+    <string name="action_logout">Log Out</string>
+
+    <string name="title_activity_update_product">UpdateProductActivity</string>
+    <string name="title_activity_subscriber_list">SubscriberListActivity</string>
+    <string name="title_activity_subscriber_description">SubscriberDescriptionActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+</resources>

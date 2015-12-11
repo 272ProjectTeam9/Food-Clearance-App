@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Food Clearance User</string>
+    <string name="app_register">Food Clearance User Registration</string>
+    <string name="action_subscribe">Subscribe to Store</string>
+</resources>
