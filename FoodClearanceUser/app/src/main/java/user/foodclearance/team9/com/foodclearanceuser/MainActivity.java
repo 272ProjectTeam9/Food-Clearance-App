@@ -1,6 +1,7 @@
 package user.foodclearance.team9.com.foodclearanceuser;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,13 +14,24 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        SharedPreferences pref=getSharedPreferences("data", 0);
+        String username=pref.getString("username","");
+
+        if(username.equals(""))
+        {
+
+
+
+
 
         Button loginButton = (Button)findViewById(R.id.bLoginP);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -48,8 +60,15 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });*/}
+        else{
+            Intent intent = new Intent(MainActivity.this, SubscribedListActivity.class);
+            intent.putExtra("username",username);
+            startActivity(intent);
+            finish();
+        }
     }
+
 
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {

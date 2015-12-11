@@ -4,8 +4,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingBottom="10dp"
-    android:paddingTop="10dp">
-
+    android:paddingTop="70dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,9 +23,9 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/zipcode"
-        android:layout_marginTop="12dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView"/>
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -34,24 +33,6 @@
         android:text="Search Stores"
         android:id="@+id/search"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/zipcode"/>
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_below="@+id/subscribed"
-        android:layout_alignParentEnd="true" />
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Subscriptionlist"
-        android:id="@+id/subscribed"
-        android:layout_gravity="center_vertical"
-        android:layout_below="@+id/search"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

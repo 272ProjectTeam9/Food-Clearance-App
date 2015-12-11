@@ -4,6 +4,17 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <permission
+        android:name="com.prgguru.example.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.prgguru.example.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -37,35 +48,62 @@
         </activity>
 
         <activity
+            android:name=".ProductListActivity"
+            android:label="@string/app_register"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
+
+
+        <activity
             android:name=".SubscribedListActivity"
-            android:label="@string/app_name"
+            android:label="@string/app_subscribedList"
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
 
         <activity
             android:name=".AddSubscriptionActivity"
-            android:label="@string/app_name"
+            android:label="@string/app_addSubscription"
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
 
         <activity
-            android:name=".ProductListActivity"
-            android:label="@string/app_name"
+            android:name=".ProductDetailsActivity"
+            android:label="@string/app_addSubscription"
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
 
         <activity
-            android:name=".StoreDescriptionActivity"
-            android:label="@string/app_name"
+            android:name=".ListStoresActivity"
+            android:label="@string/app_addSubscription"
             android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
 
 
+        <activity
+            android:name=".ProductListSubActivity"
+            android:label="@string/app_addSubscription"
+            android:theme="@style/AppTheme.NoActionBar" >
 
+        </activity>
+
+
+        <receiver
+            android:name=".GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="user.foodclearance.team9.com.foodclearanceuser" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".GCMNotificationIntentService" />
 
     </application>
 

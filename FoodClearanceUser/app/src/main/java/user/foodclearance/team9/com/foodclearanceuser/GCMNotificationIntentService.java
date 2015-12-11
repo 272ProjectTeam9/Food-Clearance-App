@@ -10,6 +10,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
@@ -25,6 +26,7 @@ public class GCMNotificationIntentService extends IntentService {
     }
 
 
+
     @Override
     protected void onHandleIntent(Intent intent) {
         Bundle extras = intent.getExtras();
@@ -35,21 +37,21 @@ public class GCMNotificationIntentService extends IntentService {
         if (!extras.isEmpty()) {
             if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR
                     .equals(messageType)) {
-                sendNotification("Send error: " + extras.toString());
+                sendNotification("Send error: " + extras.toString(),extras);
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_DELETED
                     .equals(messageType)) {
                 sendNotification("Deleted messages on server: "
-                        + extras.toString());
+                        + extras.toString(),extras);
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE
                     .equals(messageType)) {
                 sendNotification("Message Received from Google GCM Server:\n\n"
-                        + extras.get("m"));
+                        + extras.get("m"),extras);
             }
         }
         GcmBroadcastReceiver.completeWakefulIntent(intent);
     }
 
-    private void sendNotification(String msg) {
+    private void sendNotification(String msg, Bundle extras) {
         Intent resultIntent = new Intent(this, MainActivity.class);
         resultIntent.putExtra("msg", msg);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0,
@@ -61,7 +63,7 @@ public class GCMNotificationIntentService extends IntentService {
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         mNotifyBuilder = new NotificationCompat.Builder(this)
-                .setContentTitle("Alert")
+                .setContentTitle("New Product Added on Sale")
                 .setContentText("You've received new message.")
                 .setSmallIcon(R.drawable.cast_ic_notification_0);
         // Set pending intent
@@ -75,7 +77,8 @@ public class GCMNotificationIntentService extends IntentService {
 
         mNotifyBuilder.setDefaults(defaults);
         // Set the content for Notification
-        mNotifyBuilder.setContentText("New message from Server");
+        //mNotifyBuilder.setContentText("New message from Server");
+        mNotifyBuilder.setContentText(extras.get("store").toString()+" added '"+extras.get("productName").toString()+"' for price "+extras.get("newPrice"));
         // Set autocancel
         mNotifyBuilder.setAutoCancel(true);
         // Post a notification

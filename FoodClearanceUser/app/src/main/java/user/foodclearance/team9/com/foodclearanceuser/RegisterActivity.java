@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acivity_register);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarRegister   );
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarRegister);
         setSupportActionBar(toolbar);
 
         applicationContext = getApplicationContext();

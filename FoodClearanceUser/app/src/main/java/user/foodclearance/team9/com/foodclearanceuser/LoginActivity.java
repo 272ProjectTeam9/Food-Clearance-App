@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                                         "Login Successful",
                                         Toast.LENGTH_LONG).show();
 
-                                Intent intent = new Intent(LoginActivity.this, AddSubscriptionActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, SubscribedListActivity.class);
                                 intent.putExtra("username",sUsername);
                                 startActivity(intent);
                                 finish();
